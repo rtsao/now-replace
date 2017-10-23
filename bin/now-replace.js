@@ -50,10 +50,16 @@ async function setAlias(aliasUrl, deploymentUrl, token) {
     }
   }
 
-  const [uid, existing] = await Promise.all([
-    getDeploymentId(deploymentUrl),
-    getAliasedDeployment(aliasUrl)
-  ]);
+  let uid;
+  let existing;
+  try {
+    [uid, existing] = await Promise.all([
+      getDeploymentId(deploymentUrl),
+      getAliasedDeployment(aliasUrl)
+    ]);
+  } catch (err) {
+    throw err;
+  }
 
   if (existing && existing.id === uid) {
     return;
@@ -66,7 +72,11 @@ async function setAlias(aliasUrl, deploymentUrl, token) {
   }
 
   if (existing) {
-    now.deleteDeployment(existing.uid);
+    try {
+      now.deleteDeployment(existing.id);
+    } catch (err) {
+      throw err;
+    }
   }
 }
 
