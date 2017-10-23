@@ -1,6 +1,6 @@
 {
   "name": "now-replace",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Deploy to now.sh and replace existing aliased instance",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "homepage": "https://github.com/rtsao/now-replace",
