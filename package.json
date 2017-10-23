@@ -1,0 +1,15 @@
+{
+  "name": "now-replace",
+  "version": "1.0.0",
+  "description": "Deploy to now.sh and replace existing aliased instance",
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
+  "homepage": "https://github.com/rtsao/now-replace",
+  "repository": "git@github.com:rtsao/now-replace.git",
+  "bugs": "https://github.com/rtsao/now-replace/issues",
+  "bin": "./bin/now-replace.js",
+  "dependencies": {
+    "mri": "^1.1.0",
+    "now-client": "^1.1.1"
+  },
+  "license": "MIT"
+}
