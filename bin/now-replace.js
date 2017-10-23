@@ -61,10 +61,9 @@ async function setAlias(aliasUrl, deploymentUrl, token) {
   now.deleteDeployment(existing.uid);
 }
 
-const leadingProtocol = /^https:\/\//;
-const trailingSlash = /\/$/;
-
 function normalizeUrl(url) {
+  const leadingProtocol = /^https:\/\//;
+  const trailingSlash = /\/$/;
   url = url.replace(trailingSlash, '');
   url = url.replace(leadingProtocol, '');
   if (!url.includes('.')) {
