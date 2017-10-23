@@ -44,7 +44,10 @@ async function setAlias(aliasUrl, deploymentUrl, token) {
 
   async function getAliasedDeployment(aliasUrl) {
     const aliases = await now.getAliases();
-    return aliases.find(({alias}) => alias === aliasUrl).deployment;
+    const found = aliases.find(({alias}) => alias === aliasUrl);
+    if (found) {
+      return found.deployment;
+    }
   }
 
   const [uid, existing] = await Promise.all([
@@ -56,9 +59,15 @@ async function setAlias(aliasUrl, deploymentUrl, token) {
     return;
   }
 
-  await now.createAlias(uid, aliasUrl);
+  try {
+    await now.createAlias(uid, aliasUrl);
+  } catch (err) {
+    throw err;
+  }
 
-  now.deleteDeployment(existing.uid);
+  if (existing) {
+    now.deleteDeployment(existing.uid);
+  }
 }
 
 function normalizeUrl(url) {
