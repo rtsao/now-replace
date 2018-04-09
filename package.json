@@ -9,7 +9,7 @@
   "bin": "./bin/now-replace.js",
   "dependencies": {
     "mri": "^1.1.0",
-    "now-client": "^1.1.1"
+    "node-fetch": "^2.1.2"
   },
   "license": "MIT"
 }
